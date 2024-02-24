@@ -1,0 +1,30 @@
+.book-container{
+    display: grid;
+    grid-template-columns: repeat(3, clamp(100px,200px,300px));
+    grid-template-rows: repeat(auto-fit,1fr);
+    gap: 16px;
+}
+.book{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(1fr);
+    gap: 8px;
+    border: solid 2px gray;
+    border-radius: 5px;
+}
+.title,.author,.pages,.read{
+    padding:8px;
+}
+.title{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.author{
+    font-size: .9rem;
+}
+.pages{
+    font-size: .9rem;
+}
+.number{
+    font-size: 1.1rem;
+}
