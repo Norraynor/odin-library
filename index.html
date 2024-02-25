@@ -11,6 +11,7 @@
 
     <div class="container">
         <div class="header">LIBRARY</div>
+        <button class="new-book">NEW BOOK</button>
         <div class="book-container">
             <div class="book">
                 <div class="title">title 1</div>
@@ -33,6 +34,17 @@
             </div>
         </div>
     </div>
+    <dialog>
+        <form>
+            <p><label>New Book</label></p>
+            <p><label for="book-name">Name: <input id='book-name' type="text" required></label></p>
+            <p><label for="book-author">Author: <input id="book-author" type="text" required></label></p>
+            <p><label for="book-pages">Pages: <input id="book-pages" type="number" required></label></p>
+            <p><label for="book-read">Have you read it yet?<input id="book-read" type="checkbox"></label></p>
+            <input id="form-close" type="submit" value="close">
+            <input id="form-submit" type="submit" value="submit">
+        </form>
+    </dialog>
     
 </body>
 </html>
