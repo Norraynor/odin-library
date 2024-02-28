@@ -65,7 +65,7 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
-function createBookElement(book) {
+function createBookElement(book,index) {
     let newBook = document.createElement('div');
     newBook.classList.add('book');
     let title = document.createElement('div');
@@ -84,10 +84,22 @@ function createBookElement(book) {
     } else {
         read.textContent = "not read yet";        
     }
+    
+    let removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-book');
+    removeBtn.textContent = 'remove';
+    removeBtn.addEventListener('click', (e) => {
+        let bookIndex = e.target.parentElement.getAttribute("index");
+        myLibrary.splice(bookIndex, 1);
+        displayBooks();
+    })
+
     newBook.appendChild(title);
     newBook.appendChild(author);
     newBook.appendChild(pages);
     newBook.appendChild(read);
+    newBook.appendChild(removeBtn);
+    newBook.setAttribute('index',index.toString())
     return newBook;
 }
 function deleteChild(element) {
@@ -99,8 +111,8 @@ function deleteChild(element) {
 }
 function displayBooks() {
     deleteChild(bookContainer);
-    myLibrary.forEach(book => {
-        bookContainer.appendChild(createBookElement(book));
+    myLibrary.forEach((book,index) => {
+        bookContainer.appendChild(createBookElement(book,index));
     });
 }
 
