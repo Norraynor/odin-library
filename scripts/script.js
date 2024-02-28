@@ -90,11 +90,15 @@ function createBookElement(book) {
     newBook.appendChild(read);
     return newBook;
 }
+function deleteChild(element) {
+    let child = element.lastElementChild;
+    while (child) {
+        element.removeChild(child);
+        child = element.lastElementChild;
+    }
+}
 function displayBooks() {
-    //needs change
-    bookContainer.childNodes.forEach(child => {
-        bookContainer.removeChild(child);
-    });
+    deleteChild(bookContainer);
     myLibrary.forEach(book => {
         bookContainer.appendChild(createBookElement(book));
     });
