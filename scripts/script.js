@@ -54,9 +54,12 @@ function Book(title, author, pages, read) {
 	this.read = read;
 	this.info = function () {
 		return `${this.title} by ${this.author}, ${this.pages} pages, ${
-			read ? "already read" : "not read yet"
+			this.read ? "already read" : "not read yet"
 		}`;
-	};
+    };
+    this.toggleRead = function () {
+        this.read = !(this.read);
+    }
 }
 //let book = new Book("booba", "troopa", 3, false);
 //console.log(book.info());
@@ -94,11 +97,26 @@ function createBookElement(book,index) {
         displayBooks();
     })
 
+    let readBtn = document.createElement('button');
+    readBtn.classList.add('read-button');
+    if (!book.read) {
+			readBtn.textContent = "read";
+		} else {
+			readBtn.textContent = "not read";
+    }
+    readBtn.addEventListener('click', (e) => {
+        let bookIndex = e.target.parentElement.getAttribute('index');
+        let book = myLibrary[bookIndex];
+        book.toggleRead();
+        displayBooks();
+    })
+
     newBook.appendChild(title);
     newBook.appendChild(author);
     newBook.appendChild(pages);
     newBook.appendChild(read);
     newBook.appendChild(removeBtn);
+    newBook.appendChild(readBtn);
     newBook.setAttribute('index',index.toString())
     return newBook;
 }
